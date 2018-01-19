@@ -4,19 +4,15 @@ group = "com.jialiujia.mvpbase"                               // Maven Group ID 
 
 install {
     repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
         pom {
             project {
                 packaging 'aar'
                 groupId 'com.jialiujia.mvpbase'
                 artifactId 'MvpBase'
-
-                // Add your description here
                 name 'mvpbase'
                 description 'Test Google Mvp-clean'
                 url 'https://github.com/jialiujia/MvpBase'
 
-                // Set your license
                 licenses {
                     license {
                         name 'The Apache Software License, Version 2.0'
