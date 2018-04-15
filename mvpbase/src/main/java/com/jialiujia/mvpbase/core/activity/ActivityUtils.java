@@ -18,10 +18,6 @@ public class ActivityUtils {
 
 	/**
 	 * 绑定Fragment到Activity
-	 * @param fragmentManager
-	 * @param fragment
-	 * @param frameId
-	 * @throws Exception
 	 */
 	public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
 	                                         @NonNull Fragment fragment, int frameId) throws Exception {
@@ -31,6 +27,32 @@ public class ActivityUtils {
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		transaction.add(frameId, fragment);
 		transaction.commit();
+	}
+
+	/**
+	 * 在Activity替换Fragment
+	 * @param fragmentManager
+	 * @param from
+	 * @param to
+	 * @param frameId
+	 * @throws Exception
+	 */
+	public static void replaceFragmentInActivity(@NonNull FragmentManager fragmentManager,
+	                                             @NonNull Fragment from, Fragment to,
+	                                             int frameId, boolean needResume) throws Exception {
+		if (fragmentManager == null || from == null || to == null) {
+			throw new Exception("arg is null");
+		}
+		FragmentTransaction transaction = fragmentManager.beginTransaction();
+		if (!to.isAdded()) {
+			transaction.hide(from).add(frameId, to);
+			transaction.commit();
+		} else {
+			transaction.hide(from).show(to).commit();
+			if (needResume) {
+				to.onResume();
+			}
+		}
 	}
 
 	/**

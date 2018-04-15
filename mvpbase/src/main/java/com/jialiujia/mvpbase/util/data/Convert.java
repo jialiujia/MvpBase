@@ -50,14 +50,19 @@ public class Convert {
 	 * @return byte[]
 	 */
 	public static byte[] HexStrToByte(String hex) {
-		int len = (hex.length() / 2);
-		byte[] result = new byte[len];
-		char[] achar = hex.toCharArray();
-		for (int i = 0; i < len; i++) {
-			int pos = i * 2;
-			result[i] = (byte) (toByte(achar[pos]) << 4 | toByte(achar[pos + 1]));
+		if (hex == null || hex.equals("")) {
+			return null;
 		}
-		return result;
+		hex = hex.toUpperCase();
+		int length = hex.length() / 2;
+		char[] hexChars = hex.toCharArray();
+		byte[] d = new byte[length];
+		for (int i = 0; i < length; i++) {
+			int pos = i * 2;
+			d[i] = (byte) (toByte(hexChars[pos]) << 4 | toByte(hexChars[pos + 1]));
+
+		}
+		return d;
 	}
 
 	/**
@@ -130,7 +135,7 @@ public class Convert {
 		return v;
 	}
 
-	private static int toByte(char c) {
+	private static byte toByte(char c) {
 		return (byte) "0123456789ABCDEF".indexOf(c);
 	}
 }
