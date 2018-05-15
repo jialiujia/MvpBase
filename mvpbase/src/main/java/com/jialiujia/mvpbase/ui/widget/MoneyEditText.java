@@ -1,18 +1,18 @@
 package com.jialiujia.mvpbase.ui.widget;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.widget.EditText;
 
 /**
  * MvpBase
  * Created by Administrator on 2018/4/15.
  */
 
-public class MoneyEditText extends EditText {
+public class MoneyEditText extends AppCompatEditText {
 	public MoneyEditText(Context context) {
 		super(context);
 		init();
