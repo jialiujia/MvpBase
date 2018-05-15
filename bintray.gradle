@@ -1,6 +1,6 @@
 apply plugin: 'com.jfrog.bintray'
 
-version = '0.0.1'
+version = '0.0.2'
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -26,6 +26,7 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
+    projectName = properties.getProperty("project.name")
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
 

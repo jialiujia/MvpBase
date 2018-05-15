@@ -7,8 +7,8 @@ install {
         pom {
             project {
                 packaging 'aar'
-                groupId 'com.jialiujia.mvpbase'
-                artifactId 'MvpBase'
+                groupId 'com.jialiujia'
+                artifactId 'mvpbase'
                 name 'mvpbase'
                 description 'Test Google Mvp-clean'
                 url 'https://github.com/jialiujia/MvpBase'
