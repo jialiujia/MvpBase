@@ -23,7 +23,6 @@ import java.util.Map;
 
 public class QrCodeUtils {
 	private static final int BLACK = 0xFF000000;
-	private static final int WHITE = 0xFFFFFFFF;
 
 	/**
 	 * 创建二维码
@@ -49,8 +48,6 @@ public class QrCodeUtils {
 			for (int x = 0; x < width; x++) {
 				if (matrix.get(x, y)) {
 					pixels[y * width + x] = BLACK;
-				} else {
-					pixels[y * width + x] = WHITE;
 				}
 			}
 		}
@@ -88,8 +85,6 @@ public class QrCodeUtils {
 				for (int x = 0; x < width; x++) {
 					if (matrix.get(x, y)) {
 						pixels[y * width + x] = BLACK;
-					} else {
-						pixels[y * width + x] = WHITE;
 					}
 				}
 			}
