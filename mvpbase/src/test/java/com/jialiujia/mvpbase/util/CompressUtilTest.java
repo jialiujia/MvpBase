@@ -21,7 +21,7 @@ public class CompressUtilTest {
 				(byte) 0xa1, (byte) 0xb0, (byte) 0xa1, (byte) 0xb0, (byte) 0xa1, (byte) 0xb0,
 				(byte) 0xa1, (byte) 0x31, (byte) 0x31, (byte) 0x00};
 		byte[] compressData = CompressUtils.compressByGzip(ordData);
-		System.out.println(Convert.Byte2HexStr(compressData, false, true, false));
+
 	}
 
 	@Test
@@ -48,6 +48,6 @@ public class CompressUtilTest {
 				(byte)0xd7,0x00,0x00,0x00};
 
 		byte[] ordData = CompressUtils.decompressByGzip(comData);
-		System.out.println(Convert.Byte2HexStr(ordData, false, true, false));
+
 	}
 }
