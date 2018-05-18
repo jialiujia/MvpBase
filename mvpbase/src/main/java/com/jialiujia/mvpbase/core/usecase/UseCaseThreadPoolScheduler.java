@@ -20,7 +20,8 @@ class UseCaseThreadPoolScheduler implements UseCaseScheduler  {
 
 	private final Handler mHandler = new Handler();
 
-	private static final int POOL_SIZE = 6; //线程池初始大小
+	private static final int POOL_SIZE = Runtime.getRuntime()
+			.availableProcessors() + 1; //线程池初始大小
 
 	private static final int MAX_POOL_SIZE = Runtime.getRuntime()
 			.availableProcessors() * 2 + 1; //线程最大容量: 2N + 1 (N为CPU核心数)
@@ -31,12 +32,21 @@ class UseCaseThreadPoolScheduler implements UseCaseScheduler  {
 
 	private ThreadPoolExecutor mThreadPoolExecutor;
 
+	UseCaseThreadPoolScheduler(int poolSize, int maxPoolSize) {
+		init(poolSize, maxPoolSize);
+		futureSparseArray = new SparseArray<>();
+	}
+
 	UseCaseThreadPoolScheduler() {
-		mThreadPoolExecutor = new ThreadPoolExecutor(POOL_SIZE, MAX_POOL_SIZE, TIMEOUT,
+		init(POOL_SIZE, MAX_POOL_SIZE);
+		futureSparseArray = new SparseArray<>();
+	}
+
+	private void init(int poolSize, int maxPoolSize) {
+		mThreadPoolExecutor = new ThreadPoolExecutor(poolSize, maxPoolSize, TIMEOUT,
 				TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
 		//回收空闲的核心线程
 		mThreadPoolExecutor.allowCoreThreadTimeOut(true);
-		futureSparseArray = new SparseArray<>();
 	}
 
 	@Override

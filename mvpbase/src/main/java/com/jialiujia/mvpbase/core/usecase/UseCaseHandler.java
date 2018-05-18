@@ -66,6 +66,17 @@ public class UseCaseHandler {
 		}
 	}
 
+	public static UseCaseHandler getInstance(int poolSize, int maxPoolSize) {
+		if (INSTANCE == null) {
+			synchronized (UseCaseHandler.class){
+				if (INSTANCE == null){
+					INSTANCE = new UseCaseHandler(new UseCaseThreadPoolScheduler(poolSize, maxPoolSize));
+				}
+			}
+		}
+		return INSTANCE;
+	}
+
 	public static UseCaseHandler getInstance() {
 		if (INSTANCE == null) {
 			synchronized (UseCaseHandler.class){
