@@ -19,8 +19,8 @@ public abstract class UseCase<Q extends UseCase.RequestValue, P extends UseCase.
 		return mRequestValue;
 	}
 
-	public void setRequestValue(Q RequestValue) {
-		this.mRequestValue = mRequestValue;
+	public void setRequestValue(Q requestValue) {
+		this.mRequestValue = requestValue;
 	}
 
 	public UseCaseCallback<P> getUseCaseCallback() {

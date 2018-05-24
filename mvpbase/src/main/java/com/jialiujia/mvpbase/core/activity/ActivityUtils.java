@@ -30,6 +30,52 @@ public class ActivityUtils {
 	}
 
 	/**
+	 * 绑定Fragment到Activity
+	 * @param fragmentManager
+	 * @param fragment
+	 * @param frameId
+	 * @param tag
+	 * @param addTobackStack
+	 * @throws Exception
+	 */
+	public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
+	                                         @NonNull Fragment fragment, int frameId,
+	                                         String tag, boolean addTobackStack, String backTag) throws Exception {
+		if (fragmentManager == null || fragment == null) {
+			throw new Exception("arg is null");
+		}
+		FragmentTransaction transaction = fragmentManager.beginTransaction();
+		transaction.add(frameId, fragment, tag);
+		if (addTobackStack) {
+			transaction.addToBackStack(backTag);
+		}
+		transaction.commit();
+	}
+
+	/**
+	 * 在Activity替换Fragment
+	 * @param fragmentManager
+	 * @param to
+	 * @param frameId
+	 * @param tag
+	 * @param addTobackStack
+	 * @throws Exception
+	 */
+	public static void replaceFragmentInActivity(@NonNull FragmentManager fragmentManager,
+	                                             @NonNull Fragment to, int frameId,
+	                                             String tag, boolean addTobackStack, String backTag) throws Exception {
+		if (fragmentManager == null || to == null) {
+			throw new Exception("arg is null");
+		}
+		FragmentTransaction transaction = fragmentManager.beginTransaction();
+		transaction.replace(frameId, to, tag);
+		if (addTobackStack) {
+			transaction.addToBackStack(backTag);
+		}
+		transaction.commit();
+	}
+
+	/**
 	 * 在Activity替换Fragment
 	 * @param fragmentManager
 	 * @param from
@@ -38,20 +84,37 @@ public class ActivityUtils {
 	 * @throws Exception
 	 */
 	public static void replaceFragmentInActivity(@NonNull FragmentManager fragmentManager,
-	                                             @NonNull Fragment from, Fragment to,
-	                                             int frameId, boolean needResume) throws Exception {
+	                                             @NonNull Fragment from, Fragment to, int frameId,
+	                                             String tag, boolean needResume) throws Exception {
 		if (fragmentManager == null || from == null || to == null) {
 			throw new Exception("arg is null");
 		}
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		if (!to.isAdded()) {
-			transaction.hide(from).add(frameId, to);
+			transaction.hide(from).add(frameId, to, tag);
 			transaction.commit();
 		} else {
 			transaction.hide(from).show(to).commit();
 			if (needResume) {
 				to.onResume();
 			}
+		}
+	}
+
+	/**
+	 * 在Activity回退Fragment
+	 * @param fragmentManager
+	 * @param tag
+	 * @throws Exception
+	 */
+	public static void popStack(@NonNull FragmentManager fragmentManager, String tag) throws Exception {
+		if (fragmentManager == null) {
+			throw new Exception("arg is null");
+		}
+		if (tag != null) {
+			fragmentManager.popBackStack(tag, -1);
+		} else {
+			fragmentManager.popBackStack();
 		}
 	}
 

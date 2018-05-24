@@ -8,7 +8,7 @@ publish {
     userOrg = "jialiujiabcd"    //bintray.com用户名
     groupId 'com.jialiujia'    //jcenter上的路径
     artifactId 'mvpbase'    //自己的maven上添加的包名
-    publishVersion = '0.0.3-rc1'    //版本号
+    publishVersion = '0.0.5'    //版本号
     desc = 'Test Google Mvp-clean'    //描述
     website  = 'https://github.com/jialiujia/MvpBase'    //网站，不重要；
 }
@@ -30,8 +30,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 3
-        versionName "0.0.3-rc1"
+        versionCode 6
+        versionName "0.0.5"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
