@@ -14,4 +14,4 @@
 # class:
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
-#}
+#}gradlew clean build bintrayUpload -PbintrayUser=jialiujiabcd -PbintrayKey=356398b8fc2c7cd21466af7131eb6b03361c6e5c -PdryRun=false
