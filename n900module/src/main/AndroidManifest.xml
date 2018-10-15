@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mobile.n900module">
+    <uses-permission android:name="android.permission.MANAGE_NEWLAND"/>
+    <uses-permission android:name="android.permission.MANAGE_NEWLANDUART3"/>
+    <uses-permission android:name="android.permission.MANAGE_NEWLAN_CASHBOX"/>
+    <uses-permission android:name="android.permission.MANAGE_ANALOG_SERIAL"/>
+</manifest>

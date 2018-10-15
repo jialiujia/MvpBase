@@ -1,1 +1,1 @@
-include ':app', ':mvpbase'
+include ':app', ':mvpbase', ':n900module'

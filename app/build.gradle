@@ -9,7 +9,7 @@ android {
         targetSdkVersion 27
         versionCode 6
         versionName "0.0.5"
-        enforceUniquePackageName = false
+        //enforceUniquePackageName = false
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     lintOptions {

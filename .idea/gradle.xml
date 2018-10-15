@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/mvpbase" />
+            <option value="$PROJECT_DIR$/n900module" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
